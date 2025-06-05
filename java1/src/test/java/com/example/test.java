@@ -10,6 +10,18 @@ import java.util.concurrent.Executors;
 import org.junit.jupiter.api.Test;
 
 public class test {
+
+    @Test
+    void testSmallestEquivalentString() {
+        String s1 = "leetcode";
+        String s2 = "programs";
+        String base = "sourcecode";
+
+        String res = SLib.smallestEquivalentString(s1, s2, base);
+        System.out.println("res: " + res);
+        assertEquals("aauaaaaada", res);
+    }
+
     @Test
     void testLeastBricks() {
         List<List<Integer>> wall = new ArrayList<>() {

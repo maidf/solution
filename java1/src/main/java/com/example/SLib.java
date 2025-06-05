@@ -12,6 +12,56 @@ import java.util.Queue;
 
 public class SLib {
 
+    // 1061
+    static String smallestEquivalentString(String s1, String s2, String baseStr) {
+        int n = s1.length();
+        // 相同的字符保存在set里，key为组号
+        HashMap<Integer, HashSet<Character>> map = new HashMap<>();
+        // 保存每个字符的组号
+        HashMap<Character, Integer> group = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            // 获取相同的两个字符
+            char ss1 = s1.charAt(i);
+            char ss2 = s2.charAt(i);
+
+            // 获取两个字符的组号
+            // 先获取第一个字符的组号，没有就设置为 i 组
+            // 再获取第二个字符的组号，没有就设置为 g1 的组号
+            int g1 = group.getOrDefault(ss1, i);
+            int g2 = group.getOrDefault(ss2, g1);
+            // 根据组号获取对应分组的所有相同字符
+            HashSet<Character> set1 = map.getOrDefault(g1, new HashSet<>());
+            HashSet<Character> set2 = map.getOrDefault(g2, new HashSet<>());
+
+            // 添加
+            set1.add(ss1);
+            set2.add(ss2);
+            // 合并
+            set1.addAll(set2);
+
+            int g = Math.min(g1, g2);
+            map.put(g, set1);
+            set1.forEach(e -> group.put(e, g));
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < baseStr.length(); i++) {
+            char s = baseStr.charAt(i);
+            Integer g = group.get(s);
+            if (g == null) {
+                sb.append(s);
+                continue;
+            }
+            HashSet<Character> set = map.get(g);
+            char[] min = {'z'};
+            set.forEach(e -> min[0] = (char) Math.min(min[0], e));
+            sb.append(min[0]);
+        }
+
+        return sb.toString();
+    }
+
     // 554. 砖墙
     static int leastBricks(List<List<Integer>> wall) {
         int h = wall.size();
