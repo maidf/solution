@@ -5,3 +5,6 @@ pub mod s494_find_target_sum_ways;
 pub mod s547_find_circle_num;
 pub mod s1254_closed_islan;
 pub mod s1091_shortest_path_binary_matori;
+pub mod s135_candy;
+pub mod s3403_answer_strin;
+pub mod s1061_smallest_equivalent_string;
