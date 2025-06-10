@@ -9,3 +9,5 @@ pub mod s135_candy;
 pub mod s3403_answer_strin;
 pub mod s1061_smallest_equivalent_string;
 pub mod s2434_robot_with_string;
+pub mod s3170_clear_star;
+pub mod s386_lexical_order;
