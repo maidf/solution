@@ -11,3 +11,5 @@ pub mod s1061_smallest_equivalent_string;
 pub mod s2434_robot_with_string;
 pub mod s3170_clear_star;
 pub mod s386_lexical_order;
+pub mod s3445_max_differenc;
+pub mod s2966_divide_array;
